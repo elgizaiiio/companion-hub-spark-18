@@ -131,7 +131,7 @@ const WalletPage = () => {
     if (!amount || amount <= 0) { toast({ title: "Invalid Amount", variant: "destructive" }); return; }
     try {
       await sendTonPayment(tonConnectUI, { amountTon: amount, comment: "Nova deposit" });
-      if (user.profileId) await supabase.from("transactions").insert({ user_id: user.profileId, type: "deposit", amount, currency: "ton", status: "pending", wallet_address: address });
+      await createTransaction({ telegramId: user.telegramUser.id, type: "deposit", amount, currency: "ton", walletAddress: address });
       toast({ title: "Deposit Sent", description: `${amount} Gram submitted` });
       setDepositOpen(false);
       setDepositAmount("");
@@ -155,7 +155,7 @@ const WalletPage = () => {
       toast({ title: `Minimum ${min} ${withdrawCurrency.toUpperCase()}`, variant: "destructive" });
       return;
     }
-    if (user.profileId) await supabase.from("transactions").insert({ user_id: user.profileId, type: "withdrawal", amount, currency: withdrawCurrency, status: "pending", wallet_address: address });
+    await createTransaction({ telegramId: user.telegramUser.id, type: "withdrawal", amount, currency: withdrawCurrency, walletAddress: address });
     toast({ title: "Withdrawal Requested", description: `${amount} ${withdrawCurrency.toUpperCase()} submitted` });
     setWithdrawOpen(false);
     setWithdrawAmount("");
@@ -169,17 +169,15 @@ const WalletPage = () => {
         amountTon: VERIFY_AMOUNT,
         comment: "Nova wallet verification",
       });
-      if (user.profileId) {
-        await supabase.from("transactions").insert({
-          user_id: user.profileId,
-          type: "wallet_verification",
-          amount: VERIFY_AMOUNT,
-          currency: "ton",
-          status: "completed",
-          wallet_address: address,
-          tx_hash: tx.boc || null,
-        });
-      }
+      await createTransaction({
+        telegramId: user.telegramUser.id,
+        type: "wallet_verification",
+        amount: VERIFY_AMOUNT,
+        currency: "ton",
+        walletAddress: address,
+        txHash: tx.boc || null,
+        status: "completed",
+      });
       setIsVerified(true);
       setVerifyOpen(false);
       toast({ title: "Wallet verified", description: "Your wallet ownership is confirmed" });
