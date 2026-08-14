@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useApp } from "@/context/AppContext";
+import { readCache, writeCache } from "@/lib/cache";
 import {
   STAKE_ERRORS,
   claimStakeYield,
@@ -77,10 +78,18 @@ const StakingPage = () => {
   const [, setTick] = useState(0);
 
   const load = useCallback(async () => {
+    // Plans are public catalog data -> safe to paint instantly from cache.
+    // Stakes/balances always come fresh from the server (never trusted locally).
+    const cachedPlans = readCache<StakingPlan[]>("staking-plans", 10 * 60 * 1000);
+    if (cachedPlans?.length) {
+      setPlans(cachedPlans);
+      setLoading(false);
+    }
     try {
       const res = await getStakingOverview(user.telegramUser.id);
       setPlans(res?.plans ?? []);
       setStakes(res?.stakes ?? []);
+      writeCache("staking-plans", res?.plans ?? []);
     } catch (e) {
       console.error("staking load failed", e);
       toast({ title: "Couldn't load bonds", description: "Please try again.", variant: "destructive" });
