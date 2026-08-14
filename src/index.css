@@ -661,6 +661,18 @@
   z-index: 0;
   pointer-events: none;
   background: #ffffff;
+  overflow: hidden;
+}
+
+.liquid-bg__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    hsl(var(--primary) / 0.18) 0%,
+    hsl(0 0% 100% / 0.78) 45%,
+    hsl(var(--accent) / 0.2) 100%
+  );
 }
 
 /* ===== CodeNest hero ===== */
