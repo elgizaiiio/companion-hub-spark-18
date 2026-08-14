@@ -179,7 +179,7 @@ const StakingPage = () => {
                 onClick={() => setTab(t)}
                 className={`rounded-xl py-2 text-xs font-display uppercase tracking-widest transition-all ${
                   tab === t
-                    ? "bg-gradient-to-b from-primary to-accent text-primary-foreground"
+                    ? "action-black"
                     : "text-muted-foreground"
                 }`}
               >
