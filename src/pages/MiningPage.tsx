@@ -22,8 +22,8 @@ const MiningPage = () => {
   }, [getMiningTimeLeft, getMiningProgress]);
 
   return (
-    <SpotlightHero title="NOVA AI">
-      <div className="flex flex-col px-5 pb-28 pt-2">
+    <SpotlightHero title="NOVA AI" center>
+      <div className="flex w-full flex-col px-5 pb-28 pt-2">
 
         {/* Bottom glass stack */}
         <motion.div

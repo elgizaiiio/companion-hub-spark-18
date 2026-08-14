@@ -2,11 +2,16 @@ import { ReactNode } from "react";
 
 type Props = {
   title: string;
+  center?: boolean;
   children?: ReactNode;
 };
 
-const SpotlightHero = ({ title, children }: Props) => (
-  <section className="hero-dark relative w-full overflow-hidden flex flex-col">
+const SpotlightHero = ({ title, center = false, children }: Props) => (
+  <section
+    className={`hero-dark relative flex w-full flex-col overflow-hidden ${
+      center ? "min-h-[100dvh] justify-center" : ""
+    }`}
+  >
     {/* Static soft mint/pink wash — no animation */}
     <div
       aria-hidden="true"
@@ -17,11 +22,15 @@ const SpotlightHero = ({ title, children }: Props) => (
       }}
     />
 
-    <h1 className="hero-title pointer-events-none relative z-20 pt-safe px-6 mb-2 text-center text-[3rem] leading-[0.95] sm:text-[4rem]">
+    <h1
+      className={`hero-title pointer-events-none relative z-20 px-6 mb-2 text-center text-[3rem] leading-[0.95] sm:text-[4rem] ${
+        center ? "" : "pt-safe"
+      }`}
+    >
       {title}
     </h1>
 
-    <div className="relative z-40">{children}</div>
+    <div className="relative z-40 flex w-full flex-col">{children}</div>
   </section>
 );
 

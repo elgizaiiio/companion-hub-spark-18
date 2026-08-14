@@ -187,10 +187,10 @@ const TasksPage = () => {
                   const label = REWARD_LABEL[task.reward_type] || "$NOVA";
 
                   return (
-                    <motion.div key={task.id}
+                    <motion.div key={task.id} layout
                       className="relative rounded-2xl glass glass-panel cursor-pointer active:scale-[0.98] transition-all duration-200 hover:border-primary/40"
-                      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: -100 }}
-                      transition={{ delay: i * 0.06, type: "spring", stiffness: 300, damping: 25 }}
+                      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1], delay: Math.min(i, 8) * 0.035 }}
                       onClick={() => void handleTask(task)}>
                       <div className="rounded-2xl p-3.5">
                         {task.is_pinned && (
