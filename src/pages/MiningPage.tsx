@@ -23,9 +23,7 @@ const MiningPage = () => {
 
   return (
     <SpotlightHero title="NOVA AI">
-      <div className="flex min-h-screen flex-col px-5 pb-44 pt-safe-page">
-        <div className="flex-1" />
-
+      <div className="flex flex-col px-5 pb-28 pt-2">
 
         {/* Bottom glass stack */}
         <motion.div
