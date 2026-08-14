@@ -32,45 +32,45 @@
 
 @layer base {
   :root {
-    /* Warm cinematic glass — editorial dark */
-    --background: 16 55% 6%;
-    --foreground: 30 40% 89%;
-    --card: 16 40% 9%;
-    --card-foreground: 30 40% 89%;
-    --popover: 16 45% 8%;
-    --popover-foreground: 30 40% 89%;
-    --primary: 24 88% 52%;
-    --primary-foreground: 30 45% 97%;
-    --primary-glow: 36 92% 62%;
-    --secondary: 18 26% 14%;
-    --secondary-foreground: 30 35% 92%;
-    --muted: 18 22% 15%;
-    --muted-foreground: 28 20% 66%;
-    --accent: 36 80% 58%;
-    --accent-foreground: 20 40% 10%;
+    /* Black + mint green — Nova theme */
+    --background: 0 0% 4%;
+    --foreground: 150 38% 94%;
+    --card: 150 8% 7%;
+    --card-foreground: 150 38% 94%;
+    --popover: 150 7% 11%;
+    --popover-foreground: 150 38% 94%;
+    --primary: 158 80% 50%;
+    --primary-foreground: 150 38% 94%;
+    --primary-glow: 166 80% 66%;
+    --secondary: 150 7% 12%;
+    --secondary-foreground: 150 38% 94%;
+    --muted: 150 12% 14%;
+    --muted-foreground: 150 12% 67%;
+    --accent: 158 80% 50%;
+    --accent-foreground: 150 33% 9%;
     --destructive: 5 82% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 28 18% 24%;
-    --input: 18 24% 14%;
-    --ring: 24 88% 52%;
+    --border: 150 12% 14%;
+    --input: 150 8% 8%;
+    --ring: 158 80% 50%;
     --radius: 1.5rem;
     --ton-blue: 216 100% 56%;
     --neon-green: 160 84% 42%;
     --gold: 38 95% 55%;
-    --sidebar-background: 220 40% 96%;
-    --sidebar-foreground: 225 25% 12%;
-    --sidebar-primary: 216 100% 56%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 25% 92%;
-    --sidebar-accent-foreground: 225 25% 12%;
-    --sidebar-border: 220 30% 88%;
-    --sidebar-ring: 216 100% 56%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 150 38% 94%;
+    --sidebar-primary: 158 80% 50%;
+    --sidebar-primary-foreground: 150 38% 94%;
+    --sidebar-accent: 150 12% 14%;
+    --sidebar-accent-foreground: 150 38% 94%;
+    --sidebar-border: 150 12% 14%;
+    --sidebar-ring: 158 80% 50%;
 
     /* Liquid glass material tokens */
-    --glass-tint: 16 45% 7%;
+    --glass-tint: 150 10% 6%;
     --glass-opacity: 0.55;
     --glass-blur: 22px;
-    --glass-border: 30 40% 92%;
+    --glass-border: 150 30% 90%;
     --shadow-glass: 0 10px 34px -12px rgba(0, 0, 0, 0.55), 0 2px 8px -2px rgba(0, 0, 0, 0.35);
     --shadow-float: 0 24px 70px -20px rgba(0, 0, 0, 0.6);
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
