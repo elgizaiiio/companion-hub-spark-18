@@ -48,6 +48,8 @@
     --muted-foreground: 160 10% 44%;
     --accent: 338 85% 68%;
     --accent-foreground: 0 0% 100%;
+    --action: 0 0% 0%;
+    --action-foreground: 0 0% 100%;
     --destructive: 5 74% 55%;
     --destructive-foreground: 0 0% 100%;
     --border: 160 18% 90%;
@@ -674,12 +676,12 @@
 button.bg-primary,
 button.bg-accent,
 button.mining-active-btn {
-  background: hsl(0 0% 7%);
-  color: hsl(0 0% 100%);
+  background: hsl(var(--action));
+  color: hsl(var(--action-foreground));
 }
 
 button.mining-active-btn::after {
-  background: hsl(0 0% 7%);
+  background: hsl(var(--action));
 }
 
 /* ===== CodeNest hero ===== */
