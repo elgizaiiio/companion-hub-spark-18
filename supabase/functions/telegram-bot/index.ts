@@ -549,6 +549,30 @@ serve(async (req) => {
           last_id: targets.length ? targets[targets.length - 1] : null,
           failures: failures.slice(0, 5),
         };
+
+        // Self-chain to the next page so one trigger covers every user.
+        if (body.chain && !body.telegram_id && targets.length > 0) {
+          const nextAfter = targets[targets.length - 1];
+          try {
+            void fetch(`${SUPABASE_URL}/functions/v1/telegram-bot`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+                apikey: SUPABASE_SERVICE_ROLE_KEY,
+              },
+              body: JSON.stringify({
+                action: 'prizeBroadcast',
+                chain: true,
+                limit: body.limit ?? 500,
+                start_after: nextAfter,
+              }),
+            });
+            await new Promise((r) => setTimeout(r, 500));
+          } catch (e) {
+            console.error('chain failed', e);
+          }
+        }
         break;
       }
       default:
