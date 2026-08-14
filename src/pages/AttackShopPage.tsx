@@ -96,7 +96,7 @@ const AttackShopPage = () => {
   const activeGradient = CATEGORY_GRADIENTS[activeCategory];
 
   return (
-    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-safe-page">
+    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-safe">
       {/* Hero Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
