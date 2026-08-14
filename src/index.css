@@ -192,10 +192,10 @@
     opacity: 0.5;
   }
 
-  /* ---- Cinematic warm hero ---- */
+  /* ---- Black + mint hero ---- */
   .hero-dark {
-    background-color: #180a06;
-    color: rgba(237, 228, 216, 0.92);
+    background-color: #0a0a0a;
+    color: rgba(232, 245, 240, 0.92);
   }
   .hero-title {
     font-family: 'ITC Garamond Narrow', 'Playfair Display', serif;
@@ -207,10 +207,10 @@
   .hero-title-italic {
     font-style: italic;
     font-weight: 400;
-    text-shadow: 0 0 10px rgba(255,255,255,.6), 0 0 20px rgba(255,235,190,.5), 0 0 40px rgba(255,210,140,.32);
+    text-shadow: 0 0 10px rgba(255,255,255,.6), 0 0 20px rgba(190,255,235,.5), 0 0 40px rgba(140,255,220,.32);
   }
-  .hero-fg { color: #ede4d8; }
-  .hero-dim { color: rgba(235, 220, 205, 0.55); }
+  .hero-fg { color: #e8f5f0; }
+  .hero-dim { color: rgba(232, 245, 240, 0.55); }
 
   .liquid-glass {
     background: rgba(255, 255, 255, 0.06);
