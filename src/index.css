@@ -263,20 +263,18 @@
     padding: 0 22px;
     border-radius: 27px;
     border: none;
-    background: rgba(255, 255, 255, 0.72);
-    -webkit-backdrop-filter: blur(6px) saturate(1.3);
-    backdrop-filter: blur(6px) saturate(1.3);
-    box-shadow: var(--shadow-glass), inset 0 1px 0 rgba(255,255,255,0.9);
-    color: hsl(160 24% 16%);
+    background: hsl(var(--action));
+    box-shadow: 0 10px 28px -14px hsl(var(--action) / 0.6), inset 0 1px 0 hsl(var(--action-foreground) / 0.16);
+    color: hsl(var(--action-foreground));
     font-size: 16px;
     font-weight: 500;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .nv-pill:active { transform: scale(0.97); }
   .nv-pill-light {
-    background: hsl(var(--primary));
-    color: #ffffff;
-    box-shadow: 0 8px 26px -10px hsl(var(--primary) / 0.55);
+    background: hsl(var(--action));
+    color: hsl(var(--action-foreground));
+    box-shadow: 0 8px 26px -12px hsl(var(--action) / 0.6);
   }
   .nv-circle {
     display: inline-flex;
@@ -681,6 +679,17 @@ button.bg-accent,
 button.mining-active-btn {
   background: hsl(var(--action));
   color: hsl(var(--action-foreground));
+}
+
+/* Active tabs / nav / CTA gradients all render black with white text. */
+[data-state="active"].bg-primary,
+[data-state="active"].bg-accent,
+button[data-state="active"],
+a[aria-current="page"].nav-active,
+.action-black {
+  background: hsl(var(--action)) !important;
+  background-image: none !important;
+  color: hsl(var(--action-foreground)) !important;
 }
 
 button.mining-active-btn::after {
