@@ -17,7 +17,7 @@ import NOVA_ICON from "@/assets/nova-coin.png";
 
 const TON_ICON = "/images/gram-icon.png";
 const USDT_ICON = "/images/usdt.png";
-const VERIFY_AMOUNT = 5;
+const VERIFY_AMOUNT = 3;
 const NFT_MIN_GRAM = 4;
 const STAKE_MIN_GRAM = 15;
 const TON_USD = 3.5;
