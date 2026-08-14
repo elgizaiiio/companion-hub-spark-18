@@ -96,7 +96,7 @@
   }
   body {
     @apply text-foreground font-sans;
-    background: hsl(var(--background));
+    background: transparent;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     -webkit-user-select: none;
@@ -196,7 +196,7 @@
 
   /* ---- Black + mint hero ---- */
   .hero-dark {
-    background-color: #ffffff;
+    background-color: transparent;
     color: hsl(160 22% 18%);
   }
   .hero-title {
@@ -663,7 +663,7 @@
 .liquid-bg {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   background: hsl(var(--background));
   overflow: hidden;
@@ -672,7 +672,7 @@
 .liquid-bg__veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, hsl(var(--primary) / 0.08), hsl(var(--background) / 0.2), hsl(var(--accent) / 0.08));
+  background: linear-gradient(160deg, hsl(var(--primary) / 0.10), hsl(0 0% 100% / 0.35), hsl(var(--accent) / 0.12));
 }
 
 /* Keep every primary action consistently black with white text. */
