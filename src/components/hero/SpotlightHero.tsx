@@ -133,7 +133,7 @@ const SpotlightHero = ({ title, children }: Props) => {
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[25] h-[54%]"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(24,10,6,0) 0%, rgba(24,10,6,0.35) 46%, rgba(24,10,6,0.88) 78%, #180a06 100%)",
+            "linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,0.35) 46%, rgba(10,10,10,0.88) 78%, #0a0a0a 100%)",
         }}
       />
 
