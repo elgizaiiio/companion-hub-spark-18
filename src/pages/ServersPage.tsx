@@ -29,12 +29,6 @@ interface Server {
   usdt_mining_rate: number | null;
 }
 
-const MINING_POWER_MULTIPLIER = 1.25;
-
-const fmtRate = (n: number | null) => {
-  const v = (n || 0) * MINING_POWER_MULTIPLIER;
-  return Number(v.toFixed(2)).toLocaleString("en-US");
-};
 
 const ServersPage = () => {
   const { user, refreshProfile } = useApp();
@@ -161,17 +155,17 @@ const ServersPage = () => {
               <h3 className="text-xs font-display font-bold text-foreground text-center mb-2">{server.name}</h3>
               <div className="space-y-1 mb-3 text-[10px]">
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Mining +{Math.round((server.mining_boost || 0) * MINING_POWER_MULTIPLIER)}%</span>
+                  <span>Mining +{server.mining_boost || 0}%</span>
                   <span>Atk +{server.attack_boost || 0}%</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span className="text-ton-blue flex items-center gap-0.5">
                     <img src={TON_ICON} alt="Gram" className="w-3 h-3 rounded-full"  loading="lazy" decoding="async" />
-                    +{fmtRate(server.ton_mining_rate)}/d
+                    +{server.ton_mining_rate || 0}/d
                   </span>
                   <span className="text-neon-green flex items-center gap-0.5">
                     <img src={USDT_ICON} alt="USDT" className="w-3 h-3"  loading="lazy" decoding="async" />
-                    +{fmtRate(server.usdt_mining_rate)}/d
+                    +{server.usdt_mining_rate || 0}/d
                   </span>
                 </div>
               </div>
