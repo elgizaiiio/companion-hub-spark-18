@@ -96,7 +96,7 @@
   }
   body {
     @apply text-foreground font-sans;
-    background: hsl(var(--background));
+    background: transparent;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     -webkit-user-select: none;
@@ -663,7 +663,7 @@
 .liquid-bg {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   background: hsl(var(--background));
   overflow: hidden;
