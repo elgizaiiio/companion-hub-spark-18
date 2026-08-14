@@ -22,7 +22,7 @@ import monster12 from "@/assets/monsters/monster-12.png";
 import monster13 from "@/assets/monsters/monster-13.png";
 import monster14 from "@/assets/monsters/monster-14.png";
 import monster15 from "@/assets/monsters/monster-15.png";
-import { getBattleInventoryForTelegram, performAttackForTelegram, type BattleInventoryItem } from "@/lib/game-api";
+import { getBattleInventoryForTelegram, fetchPublicProfiles, performAttackForTelegram, type BattleInventoryItem } from "@/lib/game-api";
 import { sfx } from "@/lib/war-sounds";
 import { incrementMetric } from "@/lib/war-quests";
 import { ComboMeter } from "@/components/war/ComboMeter";
