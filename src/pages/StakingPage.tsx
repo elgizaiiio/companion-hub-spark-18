@@ -149,7 +149,7 @@ const StakingPage = () => {
   return (
     <div className="min-h-screen pb-28">
       <SpotlightHero title="Bonds">
-        <div className="px-5 pt-[26vh]">
+        <div className="px-5 pt-8">
           {/* Summary */}
           <motion.div
             className="rounded-3xl glass glass-panel p-6 mb-5"
@@ -179,7 +179,7 @@ const StakingPage = () => {
                 onClick={() => setTab(t)}
                 className={`rounded-xl py-2 text-xs font-display uppercase tracking-widest transition-all ${
                   tab === t
-                    ? "bg-gradient-to-b from-primary to-accent text-primary-foreground"
+                    ? "action-black"
                     : "text-muted-foreground"
                 }`}
               >

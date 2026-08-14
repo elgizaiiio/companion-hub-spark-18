@@ -154,7 +154,7 @@ const AdminPage = () => {
   if (!dashboard) return <div className="min-h-screen bg-gradient-dark flex items-center justify-center"><p className="text-muted-foreground font-display animate-pulse">Loading...</p></div>;
 
   return (
-    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-16">
+    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-6">
       <h1 className="text-xl font-display font-bold text-center text-gradient-primary mb-4">Admin Panel</h1>
 
       {/* Stats */}

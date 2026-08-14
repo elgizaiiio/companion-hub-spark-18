@@ -122,7 +122,7 @@ const ServersPage = () => {
   return (
     <div className="min-h-screen bg-gradient-dark pb-24">
       <SpotlightHero title="NFTs">
-      <div className="px-4 pt-[26vh]">
+      <div className="px-4 pt-8">
 
       <div className="mb-4">
         <CreateNftButton onCreated={() => void loadMyNfts()} />

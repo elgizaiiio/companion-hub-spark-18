@@ -336,7 +336,7 @@ const WarPage = () => {
 
   if (!character) {
     return (
-      <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-16 flex flex-col items-center justify-center gap-4">
+      <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-6 flex flex-col items-center justify-center gap-4">
         <p className="text-muted-foreground font-display">Loading next boss...</p>
         <Button onClick={() => { setLoading(true); void loadActiveCharacter(); }} className="rounded-2xl font-display">Refresh</Button>
       </div>
@@ -350,7 +350,7 @@ const WarPage = () => {
     return (
       <div className="min-h-screen pb-28 flex flex-col">
         <SpotlightHero title="Battle">
-        <div className="px-5 pt-[26vh] flex flex-col flex-1">
+        <div className="px-5 pt-8 flex flex-col flex-1">
 
 
         <motion.div
@@ -416,7 +416,7 @@ const WarPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-16 flex flex-col" style={{ height: "100dvh" }}>
+    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-6 flex flex-col" style={{ height: "100dvh" }}>
       <div className="flex items-center justify-between mb-2 shrink-0">
         <Button variant="ghost" size="sm" onClick={() => setInBattle(false)} className="text-muted-foreground text-xs px-2">Back</Button>
         <div className="glass rounded-xl px-3 py-1 flex items-center gap-1"><img src={TON_ICON} alt="Gram" className="w-4 h-4 rounded-full"  loading="lazy" decoding="async" /><span className="text-xs text-ton-blue font-display">{(character.ton_pool || 0).toFixed(2)}</span></div>

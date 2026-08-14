@@ -31,7 +31,7 @@ const BottomNav = () => {
               className={cn(
                 "relative flex flex-1 flex-col items-center justify-center gap-1 rounded-[22px] px-2 py-2.5 transition-all duration-300",
                 isActive
-                  ? "bg-gradient-to-b from-primary to-accent text-primary-foreground shadow-[0_6px_20px_-6px_hsl(var(--primary)/0.6)]"
+                  ? "action-black shadow-[0_6px_20px_-8px_hsl(var(--action)/0.6)]"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >

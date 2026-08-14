@@ -96,7 +96,7 @@ const AttackShopPage = () => {
   const activeGradient = CATEGORY_GRADIENTS[activeCategory];
 
   return (
-    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-safe-page">
+    <div className="min-h-screen bg-gradient-dark pb-24 px-4 pt-safe">
       {/* Hero Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -204,7 +204,7 @@ const AttackShopPage = () => {
 
                     <Button
                       size="sm"
-                      className="rounded-xl font-display text-xs shrink-0 h-11 px-3 bg-gradient-to-r from-primary to-accent hover:opacity-90"
+                      className="action-black rounded-xl font-display text-xs shrink-0 h-11 px-3 hover:opacity-90"
                       onClick={() => handleBuy(activeCategory, pkg.key)}
                       disabled={verifying === pkg.key}
                     >

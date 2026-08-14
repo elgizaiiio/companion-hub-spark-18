@@ -94,7 +94,7 @@ const WalletPage = () => {
     return (
       <div className="min-h-screen pb-28">
         <SpotlightHero title="Wallet">
-        <div className="px-5 pt-[26vh] pb-10 flex flex-col items-center justify-center">
+        <div className="px-5 pt-8 pb-10 flex flex-col items-center justify-center">
         <motion.div
           className="rounded-3xl glass glass-panel p-8 text-center max-w-sm w-full"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -206,7 +206,7 @@ const WalletPage = () => {
   return (
     <div className="min-h-screen pb-28">
       <SpotlightHero title="Wallet">
-      <div className="px-5 pt-[26vh]">
+      <div className="px-5 pt-8">
 
 
       {/* Total balance hero */}
