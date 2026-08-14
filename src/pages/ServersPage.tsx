@@ -29,6 +29,13 @@ interface Server {
   usdt_mining_rate: number | null;
 }
 
+const MINING_POWER_MULTIPLIER = 1.25;
+
+const fmtRate = (n: number | null) => {
+  const v = (n || 0) * MINING_POWER_MULTIPLIER;
+  return Number(v.toFixed(2)).toLocaleString("en-US");
+};
+
 const ServersPage = () => {
   const { user, refreshProfile } = useApp();
   const { toast } = useToast();

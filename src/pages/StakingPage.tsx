@@ -39,7 +39,7 @@ const NOVA_ICON = "/images/nova-logo.png";
 const fmt = (n: number, d = 4) =>
   Number(n || 0).toLocaleString("en-US", { maximumFractionDigits: d });
 
-const label = (c: string) => (c === "ton" ? "Gram" : "$NOVA");
+const label = (c: string) => (c === "ton" ? "gram" : "$NOVA");
 const icon = (c: string) => (c === "ton" ? GRAM_ICON : NOVA_ICON);
 
 const timeLeft = (iso: string) => {
