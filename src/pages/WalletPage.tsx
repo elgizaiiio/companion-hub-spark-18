@@ -341,10 +341,10 @@ const WalletPage = () => {
           <div
             className="relative w-full overflow-hidden rounded-[32px] px-7 pb-8 pt-9 text-center"
             style={{
-              background: "hsl(16 45% 7% / 0.72)",
+              background: "hsl(0 0% 100% / 0.85)",
               backdropFilter: "blur(32px) saturate(180%)",
               WebkitBackdropFilter: "blur(32px) saturate(180%)",
-              border: "1px solid hsl(30 40% 92% / 0.12)",
+              border: "1px solid hsl(160 18% 90%)",
               boxShadow: "0 24px 70px -20px rgba(0,0,0,0.6), inset 0 1px 0 hsl(0 0% 100% / 0.12)",
             }}
           >
@@ -385,10 +385,10 @@ const WalletPage = () => {
           <div
             className="relative rounded-[32px] px-7 pb-8 pt-9 text-center"
             style={{
-              background: "hsl(16 45% 7% / 0.72)",
+              background: "hsl(0 0% 100% / 0.85)",
               backdropFilter: "blur(32px) saturate(180%)",
               WebkitBackdropFilter: "blur(32px) saturate(180%)",
-              border: "1px solid hsl(30 40% 92% / 0.12)",
+              border: "1px solid hsl(160 18% 90%)",
               boxShadow: "0 24px 70px -20px rgba(0,0,0,0.6), inset 0 1px 0 hsl(0 0% 100% / 0.12)",
             }}
           >
@@ -444,10 +444,10 @@ const WalletPage = () => {
           <div
             className="relative rounded-[32px] px-7 pb-8 pt-9 text-center"
             style={{
-              background: "hsl(16 45% 7% / 0.72)",
+              background: "hsl(0 0% 100% / 0.85)",
               backdropFilter: "blur(32px) saturate(180%)",
               WebkitBackdropFilter: "blur(32px) saturate(180%)",
-              border: "1px solid hsl(30 40% 92% / 0.12)",
+              border: "1px solid hsl(160 18% 90%)",
               boxShadow: "0 24px 70px -20px rgba(0,0,0,0.6), inset 0 1px 0 hsl(0 0% 100% / 0.12)",
             }}
           >
@@ -512,10 +512,10 @@ const WalletPage = () => {
           <div
             className="relative rounded-[32px] px-7 pb-8 pt-9 text-center"
             style={{
-              background: "hsl(16 45% 7% / 0.72)",
+              background: "hsl(0 0% 100% / 0.85)",
               backdropFilter: "blur(32px) saturate(180%)",
               WebkitBackdropFilter: "blur(32px) saturate(180%)",
-              border: "1px solid hsl(30 40% 92% / 0.12)",
+              border: "1px solid hsl(160 18% 90%)",
               boxShadow: "0 24px 70px -20px rgba(0,0,0,0.6), inset 0 1px 0 hsl(0 0% 100% / 0.12)",
             }}
           >
