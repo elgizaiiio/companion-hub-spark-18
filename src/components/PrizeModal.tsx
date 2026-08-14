@@ -87,14 +87,16 @@ const PrizeModal = () => {
         >
           {/* Video background */}
           <video
-            src={prizeBgMp4}
             autoPlay
             loop
             muted
             playsInline
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-70"
-          />
+          >
+            <source src="/bg-loop.webm" type="video/webm" />
+            <source src={prizeBgMp4} type="video/mp4" />
+          </video>
           <div
             className="pointer-events-none absolute inset-0 -z-10"
             style={{
