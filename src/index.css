@@ -48,6 +48,8 @@
     --muted-foreground: 160 10% 44%;
     --accent: 338 85% 68%;
     --accent-foreground: 0 0% 100%;
+    --action: 0 0% 0%;
+    --action-foreground: 0 0% 100%;
     --destructive: 5 74% 55%;
     --destructive-foreground: 0 0% 100%;
     --border: 160 18% 90%;
@@ -660,19 +662,26 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: #ffffff;
+  background: hsl(var(--background));
   overflow: hidden;
 }
 
 .liquid-bg__veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    160deg,
-    hsl(var(--primary) / 0.18) 0%,
-    hsl(0 0% 100% / 0.78) 45%,
-    hsl(var(--accent) / 0.2) 100%
-  );
+  background: linear-gradient(160deg, hsl(var(--primary) / 0.08), hsl(var(--background) / 0.2), hsl(var(--accent) / 0.08));
+}
+
+/* Keep every primary action consistently black with white text. */
+button.bg-primary,
+button.bg-accent,
+button.mining-active-btn {
+  background: hsl(var(--action));
+  color: hsl(var(--action-foreground));
+}
+
+button.mining-active-btn::after {
+  background: hsl(var(--action));
 }
 
 /* ===== CodeNest hero ===== */

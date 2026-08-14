@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import bgVideoMp4 from "@/assets/prize-bg.mp4.asset.json";
+const bgVideoMp4 =
+  "https://pollen-batch-41236914.figma.site/_components/v2/f0ee2dae7671c170c34f12e31c4cb41418976c98/769c564298c132f7919405cd9f17c1b1231f341d.769c5642.mp4";
 
 const StarryBackground = () => {
   const ref = useRef<HTMLVideoElement>(null);
@@ -28,8 +29,8 @@ const StarryBackground = () => {
         muted
         playsInline
         preload="auto"
-        src={bgVideoMp4.url}
-        className="absolute inset-0 h-full w-full object-cover opacity-60"
+        src={bgVideoMp4}
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="liquid-bg__veil" />
     </div>
