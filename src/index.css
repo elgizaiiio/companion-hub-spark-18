@@ -519,7 +519,7 @@
   overflow: hidden;
   transition: all 0.25s ease;
   background: radial-gradient(65.28% 65.28% at 50% 100%, hsl(var(--primary) / 0.8) 0%, hsl(var(--primary) / 0) 100%),
-    linear-gradient(0deg, hsl(199 89% 38%), hsl(199 89% 38%));
+    linear-gradient(0deg, hsl(158 80% 35%), hsl(158 80% 35%));
   border-radius: var(--round);
   border: none;
   outline: none;
@@ -542,7 +542,7 @@
   transition: all 0.5s ease-in-out;
   border-radius: calc(var(--round) - 2px);
   background: radial-gradient(65.28% 65.28% at 50% 100%, hsl(var(--primary) / 0.8) 0%, hsl(var(--primary) / 0) 100%),
-    linear-gradient(0deg, hsl(199 89% 38%), hsl(199 89% 38%));
+    linear-gradient(0deg, hsl(158 80% 35%), hsl(158 80% 35%));
   z-index: 0;
 }
 .mining-active-btn:active { transform: scale(0.95); }
