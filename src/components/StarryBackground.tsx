@@ -1,17 +1,39 @@
-import bgVideo from "@/assets/prize-bg.mp4.asset.json";
+import { useEffect, useRef } from "react";
+import bgVideoMp4 from "@/assets/prize-bg.mp4.asset.json";
 
-const StarryBackground = () => (
-  <div className="liquid-bg" aria-hidden="true">
-    <video
-      src={bgVideo.url}
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="absolute inset-0 h-full w-full object-cover opacity-60"
-    />
-    <div className="liquid-bg__veil" />
-  </div>
-);
+const StarryBackground = () => {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    const play = () => void v.play().catch(() => undefined);
+    play();
+    document.addEventListener("touchstart", play, { once: true });
+    document.addEventListener("click", play, { once: true });
+    return () => {
+      document.removeEventListener("touchstart", play);
+      document.removeEventListener("click", play);
+    };
+  }, []);
+
+  return (
+    <div className="liquid-bg" aria-hidden="true">
+      <video
+        ref={ref}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        src={bgVideoMp4.url}
+        className="absolute inset-0 h-full w-full object-cover opacity-60"
+      />
+      <div className="liquid-bg__veil" />
+    </div>
+  );
+};
 
 export default StarryBackground;
