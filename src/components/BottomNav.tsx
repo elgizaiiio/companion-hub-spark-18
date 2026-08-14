@@ -1,22 +1,25 @@
-import { Pickaxe, TrendingUp, ClipboardList, Server, Wallet } from "lucide-react";
+import { Pickaxe, Landmark, CircleCheckBig, Gem, WalletMinimal } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { prefetchRoute } from "@/routes";
 
 const navItems = [
   { to: "/", icon: Pickaxe, label: "Mine" },
-  { to: "/staking", icon: TrendingUp, label: "Bonds" },
-  { to: "/tasks", icon: ClipboardList, label: "Tasks" },
-  { to: "/servers", icon: Server, label: "NFTs" },
-  { to: "/wallet", icon: Wallet, label: "Wallet" },
+  { to: "/staking", icon: Landmark, label: "Bonds" },
+  { to: "/tasks", icon: CircleCheckBig, label: "Tasks" },
+  { to: "/servers", icon: Gem, label: "NFTs" },
+  { to: "/wallet", icon: WalletMinimal, label: "Wallet" },
 ];
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const BottomNav = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-[calc(env(safe-area-inset-bottom,0px)+0.75rem)] pt-2">
-      <div className="mx-auto flex max-w-md items-center justify-between rounded-[32px] border border-border bg-background/85 px-2 py-2 backdrop-blur-2xl shadow-[0_12px_40px_-18px_rgba(16,46,38,0.25)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-[calc(env(safe-area-inset-bottom,0px)+0.6rem)] pt-2">
+      <div className="mx-auto flex max-w-sm items-center gap-1 rounded-full border border-border/70 bg-background/80 p-1.5 backdrop-blur-2xl shadow-[0_10px_30px_-16px_rgba(16,46,38,0.28)]">
         {navItems.map((item) => {
           const isActive =
             location.pathname === item.to ||
@@ -26,29 +29,34 @@ const BottomNav = () => {
             <Link
               key={item.to}
               to={item.to}
+              aria-label={item.label}
+              aria-current={isActive ? "page" : undefined}
               onMouseEnter={() => prefetchRoute(item.to)}
               onTouchStart={() => prefetchRoute(item.to)}
               className={cn(
-                "relative flex flex-1 flex-col items-center justify-center gap-1 rounded-[22px] px-2 py-2.5 transition-all duration-300",
-                isActive
-                  ? "action-black shadow-[0_6px_20px_-8px_hsl(var(--action)/0.6)]"
-                  : "text-muted-foreground hover:text-foreground"
+                "relative flex h-11 flex-1 items-center justify-center gap-1.5 rounded-full transition-colors duration-200",
+                isActive ? "text-primary-foreground" : "text-muted-foreground active:text-foreground"
               )}
             >
-              <item.icon
-                className={cn(
-                  "h-5 w-5 transition-transform duration-300",
-                  isActive && "scale-110"
+              {isActive && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-full action-black"
+                  transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                />
+              )}
+              <span className="relative flex items-center gap-1.5">
+                <item.icon className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+                {isActive && (
+                  <motion.span
+                    initial={{ opacity: 0, width: 0 }}
+                    animate={{ opacity: 1, width: "auto" }}
+                    transition={{ duration: 0.22, ease }}
+                    className="overflow-hidden whitespace-nowrap text-[11px] font-semibold tracking-tight"
+                  >
+                    {item.label}
+                  </motion.span>
                 )}
-                strokeWidth={1.75}
-              />
-              <span
-                className={cn(
-                  "text-[10px] tracking-tight",
-                  isActive ? "font-bold" : "font-medium"
-                )}
-              >
-                {item.label}
               </span>
             </Link>
           );
