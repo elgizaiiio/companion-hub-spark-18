@@ -2,10 +2,10 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const APP_URL = "https://t.me/Noveaibot/App";
 const PRIZE_IMAGE =
-  "https://companion-hub-spark.lovable.app/__l5e/assets-v1/29528cfa-ccea-4e87-b841-dfbccaea4e2d/prize-banner.jpg";
+  "https://f7ebd660-aa64-45d5-8e89-2003f4b0bb3e.lovableproject.com/__l5e/assets-v1/d72c7d9e-0f0d-4e37-b64c-e43ce02b4b8e/prize-banner-monthly.jpg";
 
 const CAPTION =
-  "Congratulations! You are user number 37,777 and you won $7,777\n\nJoin the app now and claim your prize\nYou only have a 48 hour window";
+  "Congratulations! You won the Monthly Prize of $10,000\n\nJoin the app now and claim your prize\nYou only have a 48 hour window";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
