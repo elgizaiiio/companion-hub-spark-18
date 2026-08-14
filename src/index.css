@@ -237,7 +237,7 @@
     pointer-events: none;
   }
   .liquid-glass-solid {
-    background: rgba(24, 10, 6, 0.62);
+    background: rgba(10, 10, 10, 0.62);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
     backdrop-filter: blur(18px) saturate(140%);
   }
