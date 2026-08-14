@@ -6,7 +6,7 @@ type Props = {
 };
 
 const SpotlightHero = ({ title, children }: Props) => (
-  <section className="hero-dark relative min-h-[100dvh] w-full overflow-hidden flex flex-col">
+  <section className="hero-dark relative w-full overflow-hidden flex flex-col">
     {/* Static soft mint/pink wash — no animation */}
     <div
       aria-hidden="true"
@@ -17,11 +17,11 @@ const SpotlightHero = ({ title, children }: Props) => (
       }}
     />
 
-    <h1 className="hero-title pointer-events-none relative z-20 pt-safe px-6 mb-4 text-center text-[3.25rem] leading-[0.95] sm:text-[4.5rem]">
+    <h1 className="hero-title pointer-events-none relative z-20 pt-safe px-6 mb-2 text-center text-[3rem] leading-[0.95] sm:text-[4rem]">
       {title}
     </h1>
 
-    <div className="relative z-40 mt-auto">{children}</div>
+    <div className="relative z-40">{children}</div>
   </section>
 );
 
