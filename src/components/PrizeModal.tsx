@@ -77,11 +77,11 @@ const PrizeModal = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative max-h-[calc(100dvh-1rem)] w-full overflow-y-auto overflow-x-hidden rounded-[36px] bg-[hsl(16_45%_7%/0.78)] px-5 pb-5 pt-7 text-center backdrop-blur-[36px] saturate-[180%] [-ms-overflow-style:none] [scrollbar-width:none] sm:max-h-[calc(100dvh-2rem)] sm:px-6 sm:pb-6 sm:pt-8 [@media(max-height:700px)]:pb-4 [@media(max-height:700px)]:pt-5"
+          className="relative max-h-[calc(100dvh-1rem)] w-full overflow-y-auto overflow-x-hidden rounded-[36px] bg-[hsl(0_0%_100%/0.92)] px-5 pb-5 pt-7 text-center backdrop-blur-[36px] saturate-[180%] [-ms-overflow-style:none] [scrollbar-width:none] sm:max-h-[calc(100dvh-2rem)] sm:px-6 sm:pb-6 sm:pt-8 [@media(max-height:700px)]:pb-4 [@media(max-height:700px)]:pt-5"
           style={{
-            border: "1px solid hsl(30 40% 92% / 0.14)",
+            border: "1px solid hsl(160 18% 90%)",
             boxShadow:
-              "0 -24px 70px -20px rgba(0,0,0,0.65), inset 0 1px 0 hsl(0 0% 100% / 0.14)",
+              "0 -24px 60px -22px rgba(16,46,38,0.22), inset 0 1px 0 hsl(0 0% 100% / 0.9)",
           }}
         >
           {/* Top sheen */}
@@ -89,7 +89,7 @@ const PrizeModal = () => {
             className="pointer-events-none absolute inset-x-0 top-0 h-28 opacity-50"
             style={{
               background:
-                "linear-gradient(180deg, hsl(0 0% 100% / 0.20) 0%, hsl(0 0% 100% / 0.07) 45%, transparent 100%)",
+                "linear-gradient(180deg, hsl(var(--accent) / 0.16) 0%, hsl(var(--primary) / 0.08) 45%, transparent 100%)",
             }}
           />
 
@@ -102,7 +102,7 @@ const PrizeModal = () => {
               </span>
             </p>
 
-            <div className="mt-3 overflow-hidden rounded-[22px] border border-white/[0.08] bg-foreground/[0.05] sm:mt-4">
+            <div className="mt-3 overflow-hidden rounded-[22px] border border-border bg-secondary/60 sm:mt-4">
               <img
                 src={prizeImage}
                 alt="Nova monthly prize cheque for 10,000 USDT"
@@ -113,14 +113,14 @@ const PrizeModal = () => {
               />
             </div>
 
-            <div className="mt-3 rounded-[22px] border border-white/[0.08] bg-foreground/[0.05] px-4 py-3.5 sm:mt-4 sm:px-5 sm:py-4 [@media(max-height:700px)]:py-2.5">
+            <div className="mt-3 rounded-[22px] border border-border bg-secondary/60 px-4 py-3.5 sm:mt-4 sm:px-5 sm:py-4 [@media(max-height:700px)]:py-2.5">
               <p className="text-[clamp(32px,10vw,44px)] font-display font-medium leading-none tracking-tight text-gradient-primary [@media(max-height:700px)]:text-[30px]">
                 ${reward.toLocaleString("en-US")}
               </p>
               <p className="mt-1.5 text-[clamp(9px,2.6vw,11px)] tracking-[0.18em] uppercase text-muted-foreground">USDT credited</p>
             </div>
 
-            <div className="mt-2.5 rounded-[22px] border border-white/[0.08] bg-foreground/[0.05] px-3 py-3 sm:mt-3 sm:px-5 sm:py-4 [@media(max-height:700px)]:py-2.5">
+            <div className="mt-2.5 rounded-[22px] border border-border bg-secondary/60 px-3 py-3 sm:mt-3 sm:px-5 sm:py-4 [@media(max-height:700px)]:py-2.5">
               <p className="text-[clamp(9px,2.4vw,10px)] uppercase tracking-[0.24em] text-muted-foreground">Expires in</p>
               <div className="mt-2 flex items-end justify-center gap-2 sm:gap-3">
                 {[
@@ -130,7 +130,7 @@ const PrizeModal = () => {
                 ].map((seg) => (
                   <div
                     key={seg.l}
-                    className="flex flex-1 flex-col items-center rounded-2xl bg-foreground/[0.05] px-2 py-2.5 sm:px-3"
+                    className="flex flex-1 flex-col items-center rounded-2xl bg-secondary/60 px-2 py-2.5 sm:px-3"
                   >
                     <p className="text-[clamp(24px,7.5vw,32px)] font-display font-medium leading-none text-foreground tabular-nums">
                       {seg.v}
