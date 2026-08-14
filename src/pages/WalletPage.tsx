@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Power, Lock, TrendingUp, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { PaymentError, sendTonPayment, TON_FEE_BUFFER } from "@/lib/ton";
+import { createTransaction, isWalletVerified } from "@/lib/game-api";
 
 import NOVA_ICON from "@/assets/nova-coin.png";
 
@@ -48,8 +49,8 @@ const WalletPage = () => {
   useEffect(() => {
     const check = async () => {
       if (!user.profileId) return;
-      const [verRes, srvRes, invRes, killRes, nftRes, ownNftRes, stakeRes] = await Promise.all([
-        supabase.from("transactions").select("id").eq("user_id", user.profileId).eq("type", "wallet_verification").eq("status", "completed").limit(1),
+      const [verified, srvRes, invRes, killRes, nftRes, ownNftRes, stakeRes] = await Promise.all([
+        isWalletVerified(user.telegramUser.id),
         supabase.from("user_servers").select("id").eq("user_id", user.profileId).limit(1),
         supabase.from("battle_inventory").select("total_purchased").eq("user_id", user.profileId).eq("category", "attack"),
         supabase.from("attacks").select("id").eq("user_id", user.profileId).eq("is_killing_blow", true).limit(1),
@@ -57,7 +58,7 @@ const WalletPage = () => {
         supabase.from("user_nfts").select("id").eq("telegram_id", user.telegramUser.id).gte("price_ton", NFT_MIN_GRAM).limit(1),
         supabase.from("stakes").select("amount").eq("profile_id", user.profileId).eq("currency", "ton").eq("status", "active"),
       ]);
-      setIsVerified(!!verRes.data && verRes.data.length > 0);
+      setIsVerified(Boolean(verified));
       setHasServer(!!srvRes.data && srvRes.data.length > 0);
       setAttacksBought((invRes.data ?? []).reduce((s, r: any) => s + (r.total_purchased ?? 0), 0));
       setHasKill(!!killRes.data && killRes.data.length > 0);
@@ -130,7 +131,7 @@ const WalletPage = () => {
     if (!amount || amount <= 0) { toast({ title: "Invalid Amount", variant: "destructive" }); return; }
     try {
       await sendTonPayment(tonConnectUI, { amountTon: amount, comment: "Nova deposit" });
-      if (user.profileId) await supabase.from("transactions").insert({ user_id: user.profileId, type: "deposit", amount, currency: "ton", status: "pending", wallet_address: address });
+      await createTransaction({ telegramId: user.telegramUser.id, type: "deposit", amount, currency: "ton", walletAddress: address });
       toast({ title: "Deposit Sent", description: `${amount} Gram submitted` });
       setDepositOpen(false);
       setDepositAmount("");
@@ -154,7 +155,7 @@ const WalletPage = () => {
       toast({ title: `Minimum ${min} ${withdrawCurrency.toUpperCase()}`, variant: "destructive" });
       return;
     }
-    if (user.profileId) await supabase.from("transactions").insert({ user_id: user.profileId, type: "withdrawal", amount, currency: withdrawCurrency, status: "pending", wallet_address: address });
+    await createTransaction({ telegramId: user.telegramUser.id, type: "withdrawal", amount, currency: withdrawCurrency, walletAddress: address });
     toast({ title: "Withdrawal Requested", description: `${amount} ${withdrawCurrency.toUpperCase()} submitted` });
     setWithdrawOpen(false);
     setWithdrawAmount("");
@@ -168,17 +169,15 @@ const WalletPage = () => {
         amountTon: VERIFY_AMOUNT,
         comment: "Nova wallet verification",
       });
-      if (user.profileId) {
-        await supabase.from("transactions").insert({
-          user_id: user.profileId,
-          type: "wallet_verification",
-          amount: VERIFY_AMOUNT,
-          currency: "ton",
-          status: "completed",
-          wallet_address: address,
-          tx_hash: tx.boc || null,
-        });
-      }
+      await createTransaction({
+        telegramId: user.telegramUser.id,
+        type: "wallet_verification",
+        amount: VERIFY_AMOUNT,
+        currency: "ton",
+        walletAddress: address,
+        txHash: tx.boc || null,
+        status: "completed",
+      });
       setIsVerified(true);
       setVerifyOpen(false);
       toast({ title: "Wallet verified", description: "Your wallet ownership is confirmed" });

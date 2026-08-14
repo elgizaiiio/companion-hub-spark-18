@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
 import {
-  fetchProfileById,
+  fetchOwnProfile,
   findOrCreateProfile,
   startMiningForTelegram,
   syncMiningForTelegram,
@@ -136,7 +136,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
       let freshProfile: any = null;
       try {
-        freshProfile = await withTimeout(fetchProfileById(profile.id), 8000);
+        freshProfile = await withTimeout(fetchOwnProfile(telegramUser.id), 8000);
       } catch (e) {
         console.warn("Fresh profile fetch failed:", e);
       }

@@ -12073,6 +12073,10 @@ export type Database = {
         Args: { _is_pinned: boolean; _task_id: string; _telegram_id: number }
         Returns: Json
       }
+      admin_set_welcome_image_for_telegram: {
+        Args: { _telegram_id: number; _url: string }
+        Returns: Json
+      }
       admin_toggle_ban_for_telegram: {
         Args: { _is_banned: boolean; _profile_id: string; _telegram_id: number }
         Returns: Json
@@ -12304,11 +12308,47 @@ export type Database = {
         Returns: Json
       }
       expire_prize_rewards: { Args: never; Returns: number }
+      game_create_own_profile: {
+        Args: {
+          _first_name: string
+          _last_name: string
+          _photo_url: string
+          _telegram_id: number
+          _username: string
+        }
+        Returns: Json
+      }
+      game_create_transaction: {
+        Args: {
+          _amount: number
+          _currency: string
+          _status?: string
+          _telegram_id: number
+          _tx_hash?: string
+          _type: string
+          _wallet_address: string
+        }
+        Returns: Json
+      }
       game_credit_referral: {
         Args: { _source: string; _ton_paid: number; _user_id: string }
         Returns: number
       }
+      game_get_own_profile: { Args: { _telegram_id: number }; Returns: Json }
+      game_is_wallet_verified: {
+        Args: { _telegram_id: number }
+        Returns: boolean
+      }
       game_profile_id: { Args: { _telegram_id: number }; Returns: string }
+      game_public_profiles: {
+        Args: { _ids: string[] }
+        Returns: {
+          first_name: string
+          id: string
+          photo_url: string
+          username: string
+        }[]
+      }
       get_battle_inventory_for_telegram: {
         Args: { _telegram_id: number }
         Returns: Json

@@ -96,54 +96,52 @@ const buildTelegramScopedUserId = (telegramId: number) => {
 };
 
 const fetchProfileByTelegramId = async (telegramId: number): Promise<ProfileRecord | null> => {
-  const { data, error } = await supabase
-    .from("profiles")
-    .select(PROFILE_SELECT)
-    .eq("telegram_id", telegramId)
-    .maybeSingle();
-
-  if (error) throw error;
+  const data = await callRpc<ProfileRecord | null>("game_get_own_profile", { _telegram_id: telegramId });
   return (data as ProfileRecord | null) ?? null;
 };
 
 export const findOrCreateProfile = async (telegramUser: TelegramUserPayload): Promise<ProfileRecord> => {
   const existing = await fetchProfileByTelegramId(telegramUser.id);
   if (existing) return existing;
-
-  const referralCode = `SIRI${telegramUser.id}${Date.now().toString(36)}`.toUpperCase();
-  const { data, error } = await supabase
-    .from("profiles")
-    .insert({
-      telegram_id: telegramUser.id,
-      first_name: telegramUser.first_name || "Player",
-      last_name: telegramUser.last_name || "",
-      username: telegramUser.username || "",
-      photo_url: telegramUser.photo_url || "",
-      referral_code: referralCode,
-      user_id: buildTelegramScopedUserId(telegramUser.id),
-    })
-    .select(PROFILE_SELECT)
-    .single();
-
-  if (!error) return data as ProfileRecord;
-
-  if (error.code === "23505") {
-    const conflictedProfile = await fetchProfileByTelegramId(telegramUser.id);
-    if (conflictedProfile) return conflictedProfile;
-  }
-
-  throw error;
+  const created = await callRpc<ProfileRecord | null>("game_create_own_profile", {
+    _telegram_id: telegramUser.id,
+    _first_name: telegramUser.first_name || "Player",
+    _last_name: telegramUser.last_name || "",
+    _username: telegramUser.username || "",
+    _photo_url: telegramUser.photo_url || "",
+  });
+  if (created) return created;
+  const retry = await fetchProfileByTelegramId(telegramUser.id);
+  if (retry) return retry;
+  throw new Error("Profile creation failed");
 };
 
-export const fetchProfileById = async (profileId: string): Promise<ProfileRecord | null> => {
-  const { data, error } = await supabase
-    .from("profiles")
-    .select(PROFILE_SELECT)
-    .eq("id", profileId)
-    .maybeSingle();
-  if (error) throw error;
-  return (data as ProfileRecord | null) ?? null;
+export const fetchOwnProfile = (telegramId: number) => fetchProfileByTelegramId(telegramId);
+
+export type PublicProfile = { id: string; username: string | null; first_name: string | null; photo_url: string | null };
+
+export const fetchPublicProfiles = async (ids: string[]): Promise<PublicProfile[]> => {
+  if (ids.length === 0) return [];
+  const data = await callRpc<PublicProfile[]>("game_public_profiles", { _ids: ids });
+  return data ?? [];
 };
+
+export const isWalletVerified = (telegramId: number) =>
+  callRpc<boolean>("game_is_wallet_verified", { _telegram_id: telegramId });
+
+export const createTransaction = (params: {
+  telegramId: number; type: "deposit" | "withdrawal" | "wallet_verification";
+  amount: number; currency: string; walletAddress?: string | null; txHash?: string | null; status?: string;
+}) =>
+  callRpc<{ success: boolean; error?: string; id?: string }>("game_create_transaction", {
+    _telegram_id: params.telegramId,
+    _type: params.type,
+    _amount: params.amount,
+    _currency: params.currency,
+    _wallet_address: params.walletAddress ?? null,
+    _tx_hash: params.txHash ?? null,
+    _status: params.status ?? "pending",
+  });
 
 // ── Mining ──
 export const syncMiningForTelegram = (telegramId: number) =>

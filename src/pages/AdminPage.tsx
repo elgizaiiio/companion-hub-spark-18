@@ -137,15 +137,15 @@ const AdminPage = () => {
 
   const handleSetWelcomeImage = async () => {
     if (!welcomeImageUrl.trim()) return;
-    const { error } = await supabase
-      .from("telegram_admins")
-      .update({ welcome_image_url: welcomeImageUrl.trim() } as any)
-      .eq("telegram_id", telegramId);
-    if (!error) {
+    const { data, error } = await (supabase as any).rpc("admin_set_welcome_image_for_telegram", {
+      _telegram_id: telegramId,
+      _url: welcomeImageUrl.trim(),
+    });
+    if (!error && data?.success) {
       toast({ title: "Welcome image updated!" });
       setWelcomeImageUrl("");
     } else {
-      toast({ title: "Error", description: error.message, variant: "destructive" });
+      toast({ title: "Error", description: error?.message || data?.error || "Failed", variant: "destructive" });
     }
   };
 

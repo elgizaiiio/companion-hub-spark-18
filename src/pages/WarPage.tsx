@@ -22,7 +22,7 @@ import monster12 from "@/assets/monsters/monster-12.png";
 import monster13 from "@/assets/monsters/monster-13.png";
 import monster14 from "@/assets/monsters/monster-14.png";
 import monster15 from "@/assets/monsters/monster-15.png";
-import { getBattleInventoryForTelegram, performAttackForTelegram, type BattleInventoryItem } from "@/lib/game-api";
+import { getBattleInventoryForTelegram, fetchPublicProfiles, performAttackForTelegram, type BattleInventoryItem } from "@/lib/game-api";
 import { sfx } from "@/lib/war-sounds";
 import { incrementMetric } from "@/lib/war-quests";
 import { ComboMeter } from "@/components/war/ComboMeter";
@@ -130,8 +130,7 @@ const WarPage = () => {
     for (const a of data) totals.set(a.user_id, (totals.get(a.user_id) || 0) + a.damage);
     const userIds = [...totals.keys()];
     if (userIds.length === 0) { setContributors(new Map()); return; }
-    const { data: profiles } = await supabase.from("profiles")
-      .select("id, username, first_name, photo_url").in("id", userIds);
+    const profiles = await fetchPublicProfiles(userIds);
     const sorted = [...totals.entries()].sort((a, b) => b[1] - a[1]);
     const map = new Map<string, Contributor>();
     sorted.forEach(([uid, total], i) => {
@@ -210,8 +209,7 @@ const WarPage = () => {
         filter: `character_id=eq.${character.id}`,
       }, async (payload) => {
         const attack = payload.new as { id: string; user_id: string; damage: number; metadata: { ton_reward?: number } };
-        const { data: profile } = await supabase.from("profiles")
-          .select("username, first_name, photo_url").eq("id", attack.user_id).limit(1);
+        const profile = await fetchPublicProfiles([attack.user_id]);
         const p = profile?.[0];
         const tonReward = attack.metadata?.ton_reward || 0;
         const username = p?.username || p?.first_name || "Unknown";
