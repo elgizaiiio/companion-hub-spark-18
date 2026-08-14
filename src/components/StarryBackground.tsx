@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import bgVideoMp4 from "@/assets/prize-bg.mp4.asset.json";
+import bgVideoMp4 from "@/assets/nova-bg.mp4.asset.json";
 
 const StarryBackground = () => {
   const ref = useRef<HTMLVideoElement>(null);
@@ -29,7 +29,7 @@ const StarryBackground = () => {
         playsInline
         preload="auto"
         src={bgVideoMp4.url}
-        className="absolute inset-0 h-full w-full object-cover opacity-60"
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="liquid-bg__veil" />
     </div>

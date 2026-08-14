@@ -5,7 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/context/AppContext";
 import { supabase } from "@/integrations/supabase/client";
-import prizeBgMp4 from "@/assets/prize-bg.mp4.asset.json";
+import prizeBgMp4 from "@/assets/nova-bg.mp4.asset.json";
 
 const pad = (n: number) => String(Math.max(0, n)).padStart(2, "0");
 
