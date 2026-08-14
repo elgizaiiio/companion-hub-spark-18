@@ -397,7 +397,10 @@
 .animate-hp-damage { animation: hp-damage 0.3s ease-out; }
 
 /* Disable view-transition / refresh flash on route changes. */
-#root { opacity: 1 !important; background: hsl(var(--background)); }
+#root { opacity: 1 !important; background: transparent; }
+
+/* Let the global video background show through page wrappers. */
+.bg-gradient-dark { background: transparent !important; }
 
 @media (prefers-reduced-motion: reduce) {
   [data-page-transition] { animation: none !important; transition: none !important; }

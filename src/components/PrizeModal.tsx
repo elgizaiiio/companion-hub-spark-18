@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useApp } from "@/context/AppContext";
 import { supabase } from "@/integrations/supabase/client";
 const prizeBgMp4 =
-  "https://pollen-batch-41236914.figma.site/_components/v2/f0ee2dae7671c170c34f12e31c4cb41418976c98/769c564298c132f7919405cd9f17c1b1231f341d.769c5642.mp4";
+  "/bg-loop.mp4";
 
 const pad = (n: number) => String(Math.max(0, n)).padStart(2, "0");
 
