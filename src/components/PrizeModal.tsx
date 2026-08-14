@@ -5,7 +5,8 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/context/AppContext";
 import { supabase } from "@/integrations/supabase/client";
-import prizeBg from "@/assets/prize-bg.mp4.asset.json";
+import prizeBgMp4 from "@/assets/prize-bg.mp4.asset.json";
+import prizeBgWebm from "@/assets/prize-bg.webm.asset.json";
 
 const pad = (n: number) => String(Math.max(0, n)).padStart(2, "0");
 
@@ -86,14 +87,16 @@ const PrizeModal = () => {
         >
           {/* Video background */}
           <video
-            src={prizeBg.url}
             autoPlay
             loop
             muted
             playsInline
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-70"
-          />
+          >
+            <source src={prizeBgWebm.url} type="video/webm" />
+            <source src={prizeBgMp4.url} type="video/mp4" />
+          </video>
           <div
             className="pointer-events-none absolute inset-0 -z-10"
             style={{
