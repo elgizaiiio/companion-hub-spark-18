@@ -265,7 +265,7 @@
     -webkit-backdrop-filter: blur(6px) saturate(1.3);
     backdrop-filter: blur(6px) saturate(1.3);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06);
-    color: #ede4d8;
+    color: #e8f5f0;
     font-size: 16px;
     font-weight: 500;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -273,7 +273,7 @@
   .nv-pill:active { transform: scale(0.97); }
   .nv-pill-light {
     background: #fff;
-    color: #14151d;
+    color: #0a0a0a;
     box-shadow: 0 6px 26px rgba(0, 0, 0, 0.28);
   }
   .nv-circle {
@@ -286,17 +286,17 @@
     -webkit-backdrop-filter: blur(6px) saturate(1.3);
     backdrop-filter: blur(6px) saturate(1.3);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
-    color: #ede4d8;
+    color: #e8f5f0;
   }
   .nv-eyebrow {
     font-family: 'Inter', sans-serif;
     font-size: 10px;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: rgba(235, 220, 205, 0.5);
+    color: rgba(232, 245, 240, 0.5);
   }
-  .nv-stat-num { font-size: 25px; font-weight: 500; color: #ede4d8; }
-  .nv-stat-label { font-size: 13px; color: #BAAA9A8C; }
+  .nv-stat-num { font-size: 25px; font-weight: 500; color: #e8f5f0; }
+  .nv-stat-label { font-size: 13px; color: #8ea89d8C; }
   .nv-divider {
     height: 1px;
     background: linear-gradient(to right, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.30) 70%, rgba(255,255,255,0) 100%);
@@ -307,7 +307,7 @@
     display: inline-flex;
     padding: 5px 8px;
     border-radius: 11px;
-    background: #4d5057;
+    background: #2d3a35;
     font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 0.2px;
