@@ -350,7 +350,7 @@ const WarPage = () => {
     return (
       <div className="min-h-screen pb-28 flex flex-col">
         <SpotlightHero title="Battle">
-        <div className="px-5 pt-[26vh] flex flex-col flex-1">
+        <div className="px-5 pt-8 flex flex-col flex-1">
 
 
         <motion.div

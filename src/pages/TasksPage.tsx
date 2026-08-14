@@ -163,7 +163,7 @@ const TasksPage = () => {
   return (
     <div className="min-h-screen pb-28">
       <SpotlightHero title="Tasks">
-      <div id="tasks" className="px-5 pt-[26vh]">
+      <div id="tasks" className="px-5 pt-8">
 
       <Tabs defaultValue="tasks" className="w-full">
         <TabsList className="w-full glass glass-subtle border border-border rounded-full h-11 mb-6 p-1">
