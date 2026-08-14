@@ -13,7 +13,7 @@ const SpotlightHero = ({ title, children }: Props) => (
       className="pointer-events-none absolute inset-0 z-0"
       style={{
         background:
-          "radial-gradient(ellipse 70% 45% at 20% 0%, hsl(var(--primary) / 0.12), transparent 70%), radial-gradient(ellipse 60% 40% at 90% 12%, hsl(var(--accent) / 0.16), transparent 70%), #ffffff",
+          "radial-gradient(ellipse 70% 45% at 20% 0%, hsl(var(--primary) / 0.10), transparent 70%), radial-gradient(ellipse 60% 40% at 90% 12%, hsl(var(--accent) / 0.12), transparent 70%)",
       }}
     />
 
