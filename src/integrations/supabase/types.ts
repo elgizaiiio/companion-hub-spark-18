@@ -2383,6 +2383,111 @@ export type Database = {
         }
         Relationships: []
       }
+      bundle_books: {
+        Row: {
+          cover_url: string | null
+          created_at: string
+          description: string | null
+          file_url: string | null
+          id: string
+          is_published: boolean
+          position: number
+          subtitle: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          file_url?: string | null
+          id?: string
+          is_published?: boolean
+          position: number
+          subtitle?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          file_url?: string | null
+          id?: string
+          is_published?: boolean
+          position?: number
+          subtitle?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      bundle_orders: {
+        Row: {
+          admin_note: string | null
+          amount: number
+          country: string
+          created_at: string
+          currency: string
+          email: string
+          full_name: string
+          id: string
+          locale: string
+          paid_at: string | null
+          payment_method: string
+          phone: string | null
+          provider: string
+          provider_ref: string | null
+          receipt_path: string | null
+          status: Database["public"]["Enums"]["bundle_order_status"]
+          transfer_reference: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_note?: string | null
+          amount?: number
+          country?: string
+          created_at?: string
+          currency?: string
+          email: string
+          full_name: string
+          id?: string
+          locale?: string
+          paid_at?: string | null
+          payment_method?: string
+          phone?: string | null
+          provider?: string
+          provider_ref?: string | null
+          receipt_path?: string | null
+          status?: Database["public"]["Enums"]["bundle_order_status"]
+          transfer_reference?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_note?: string | null
+          amount?: number
+          country?: string
+          created_at?: string
+          currency?: string
+          email?: string
+          full_name?: string
+          id?: string
+          locale?: string
+          paid_at?: string | null
+          payment_method?: string
+          phone?: string | null
+          provider?: string
+          provider_ref?: string | null
+          receipt_path?: string | null
+          status?: Database["public"]["Enums"]["bundle_order_status"]
+          transfer_reference?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       calendar_connections: {
         Row: {
           access_token: string | null
@@ -3363,6 +3468,39 @@ export type Database = {
         }
         Relationships: []
       }
+      dodo_catalog: {
+        Row: {
+          amount_cents: number
+          created_at: string
+          dodo_product_id: string
+          id: string
+          lang: string
+          mode: string
+          product: string
+          updated_at: string
+        }
+        Insert: {
+          amount_cents: number
+          created_at?: string
+          dodo_product_id: string
+          id?: string
+          lang: string
+          mode?: string
+          product: string
+          updated_at?: string
+        }
+        Update: {
+          amount_cents?: number
+          created_at?: string
+          dodo_product_id?: string
+          id?: string
+          lang?: string
+          mode?: string
+          product?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       dodo_products: {
         Row: {
           active: boolean
@@ -4317,6 +4455,30 @@ export type Database = {
           topic?: string | null
           user_id?: string
           weak_topics?: Json | null
+        }
+        Relationships: []
+      }
+      library_requests: {
+        Row: {
+          created_at: string
+          email: string
+          error: string | null
+          id: string
+          sent: boolean
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          error?: string | null
+          id?: string
+          sent?: boolean
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          error?: string | null
+          id?: string
+          sent?: boolean
         }
         Relationships: []
       }
@@ -7044,6 +7206,51 @@ export type Database = {
           state?: string
           success_count?: number
           updated_at?: string
+        }
+        Relationships: []
+      }
+      purchases: {
+        Row: {
+          access_token: string
+          amount: number
+          created_at: string
+          currency: string
+          email: string
+          email_sent: boolean
+          id: string
+          lang: string
+          paid_at: string | null
+          product: string
+          provider_payment_id: string | null
+          status: string
+        }
+        Insert: {
+          access_token?: string
+          amount: number
+          created_at?: string
+          currency?: string
+          email: string
+          email_sent?: boolean
+          id?: string
+          lang?: string
+          paid_at?: string | null
+          product: string
+          provider_payment_id?: string | null
+          status?: string
+        }
+        Update: {
+          access_token?: string
+          amount?: number
+          created_at?: string
+          currency?: string
+          email?: string
+          email_sent?: boolean
+          id?: string
+          lang?: string
+          paid_at?: string | null
+          product?: string
+          provider_payment_id?: string | null
+          status?: string
         }
         Relationships: []
       }
@@ -12657,6 +12864,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      bundle_order_status: "pending" | "approved" | "rejected"
       memory_scope:
         | "account"
         | "conversation"
@@ -12801,6 +13009,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      bundle_order_status: ["pending", "approved", "rejected"],
       memory_scope: [
         "account",
         "conversation",
