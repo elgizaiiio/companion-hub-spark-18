@@ -5,7 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/context/AppContext";
 import { supabase } from "@/integrations/supabase/client";
-import prizeImage from "@/assets/prize-check.jpg";
+import prizeImage from "@/assets/prize-check-monthly.jpg";
 
 const pad = (n: number) => String(Math.max(0, n)).padStart(2, "0");
 
@@ -96,16 +96,20 @@ const PrizeModal = () => {
           <div className="relative z-10">
             <h2 className="text-[clamp(20px,5.5vw,26px)] font-display font-medium leading-none text-foreground">{displayName}</h2>
             <p className="mt-1.5 text-[clamp(11px,3vw,12px)] text-muted-foreground">
-              You are user number{" "}
-              <span className="text-[clamp(14px,4vw,16px)] font-display font-medium text-gradient-primary">37,777</span>
+              You won the{" "}
+              <span className="text-[clamp(14px,4vw,16px)] font-display font-medium text-gradient-primary">
+                Monthly Prize
+              </span>
             </p>
 
             <div className="mt-3 overflow-hidden rounded-[22px] border border-white/[0.08] bg-foreground/[0.05] sm:mt-4">
               <img
                 src={prizeImage}
-                alt="Nova prize cheque for 7777 USDT"
+                alt="Nova monthly prize cheque for 10,000 USDT"
                 className="h-auto max-h-[24dvh] w-full object-cover object-center [@media(max-height:700px)]:max-h-[18dvh]"
                 loading="eager"
+                width={1024}
+                height={640}
               />
             </div>
 
