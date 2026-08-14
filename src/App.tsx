@@ -74,8 +74,8 @@ const AnimatedRoutes = () => {
   }, []);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <Suspense fallback={<RouteFallback />}>
+    <Suspense fallback={<RouteFallback />}>
+      <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageTransition><MiningPage /></PageTransition>} />
           <Route path="/war" element={<PageTransition><WarPage /></PageTransition>} />
@@ -87,8 +87,8 @@ const AnimatedRoutes = () => {
           <Route path="/attack-shop" element={<PageTransition><AttackShopPage /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
-      </Suspense>
-    </AnimatePresence>
+      </AnimatePresence>
+    </Suspense>
   );
 };
 
