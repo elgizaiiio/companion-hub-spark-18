@@ -3226,6 +3226,51 @@ export type Database = {
         }
         Relationships: []
       }
+      crypto_payments: {
+        Row: {
+          amount: number
+          billing_interval: string
+          created_at: string
+          currency: string
+          id: string
+          plan: string
+          provider: string
+          raw: Json
+          reference: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          billing_interval?: string
+          created_at?: string
+          currency?: string
+          id?: string
+          plan: string
+          provider: string
+          raw?: Json
+          reference: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          billing_interval?: string
+          created_at?: string
+          currency?: string
+          id?: string
+          plan?: string
+          provider?: string
+          raw?: Json
+          reference?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       customer_addresses: {
         Row: {
           address: string
@@ -3980,6 +4025,104 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      gram_invest_plans: {
+        Row: {
+          apr: number
+          created_at: string
+          duration_days: number
+          early_exit_fee_pct: number
+          id: string
+          is_active: boolean
+          max_amount: number | null
+          min_amount: number
+          name: string
+          sort_order: number
+        }
+        Insert: {
+          apr: number
+          created_at?: string
+          duration_days: number
+          early_exit_fee_pct?: number
+          id?: string
+          is_active?: boolean
+          max_amount?: number | null
+          min_amount?: number
+          name: string
+          sort_order?: number
+        }
+        Update: {
+          apr?: number
+          created_at?: string
+          duration_days?: number
+          early_exit_fee_pct?: number
+          id?: string
+          is_active?: boolean
+          max_amount?: number | null
+          min_amount?: number
+          name?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      gram_investments: {
+        Row: {
+          amount: number
+          apr: number
+          claimed_yield: number
+          closed_at: string | null
+          created_at: string
+          duration_days: number
+          early_exit_fee_pct: number
+          ends_at: string
+          id: string
+          last_claim_at: string
+          plan_id: string
+          profile_id: string
+          started_at: string
+          status: string
+        }
+        Insert: {
+          amount: number
+          apr: number
+          claimed_yield?: number
+          closed_at?: string | null
+          created_at?: string
+          duration_days: number
+          early_exit_fee_pct?: number
+          ends_at: string
+          id?: string
+          last_claim_at?: string
+          plan_id: string
+          profile_id: string
+          started_at?: string
+          status?: string
+        }
+        Update: {
+          amount?: number
+          apr?: number
+          claimed_yield?: number
+          closed_at?: string | null
+          created_at?: string
+          duration_days?: number
+          early_exit_fee_pct?: number
+          ends_at?: string
+          id?: string
+          last_claim_at?: string
+          plan_id?: string
+          profile_id?: string
+          started_at?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "gram_investments_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "gram_invest_plans"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       headshot_templates: {
         Row: {
@@ -8586,6 +8729,24 @@ export type Database = {
         }
         Relationships: []
       }
+      service_secrets: {
+        Row: {
+          created_at: string
+          name: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          name: string
+          value: string
+        }
+        Update: {
+          created_at?: string
+          name?: string
+          value?: string
+        }
+        Relationships: []
+      }
       service_status: {
         Row: {
           checked_at: string
@@ -12394,6 +12555,35 @@ export type Database = {
         Returns: Json
       }
       get_workspace_invite_details: { Args: { p_token: string }; Returns: Json }
+      gram_invest_claim_for_telegram: {
+        Args: { _investment_id: string; _telegram_id: number }
+        Returns: Json
+      }
+      gram_invest_create_for_telegram: {
+        Args: { _amount: number; _plan_id: string; _telegram_id: number }
+        Returns: Json
+      }
+      gram_invest_overview_for_telegram: {
+        Args: { _telegram_id: number }
+        Returns: Json
+      }
+      gram_invest_pending_yield: {
+        Args: { _inv: Database["public"]["Tables"]["gram_investments"]["Row"] }
+        Returns: number
+      }
+      gram_invest_withdraw_for_telegram: {
+        Args: { _investment_id: string; _telegram_id: number }
+        Returns: Json
+      }
+      grant_crypto_plan: {
+        Args: {
+          p_provider: string
+          p_raw?: Json
+          p_reference: string
+          p_secret: string
+        }
+        Returns: Json
+      }
       grant_user_credits: {
         Args: {
           p_action_type: string
@@ -12543,6 +12733,10 @@ export type Database = {
           p_source_table: string
         }
         Returns: string
+      }
+      nft_mining_power_for_telegram: {
+        Args: { _telegram_id: number }
+        Returns: Json
       }
       orders_by_phone: {
         Args: { p_phone: string }
