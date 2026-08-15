@@ -124,23 +124,25 @@ const PrizeModal = () => {
               </span>
             </p>
 
-            <div className="mt-3 flex flex-col items-center gap-1.5">
-              <p className="text-[clamp(8px,2.2vw,9px)] uppercase tracking-[0.22em] text-muted-foreground">
-                In partnership with
-              </p>
-              <div className="flex items-center justify-center gap-2">
-                <span className="rounded-full border border-border bg-[hsl(0_0%_100%/0.8)] px-3 py-1 text-[clamp(10px,2.8vw,12px)] font-display font-medium text-foreground">
-                  Nova
+            <div className="mt-3 flex flex-col items-center gap-2">
+              <div className="flex items-center gap-1.5 rounded-full border border-[hsl(var(--primary)/0.35)] bg-[hsl(var(--primary)/0.08)] px-3 py-1">
+                <Handshake className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
+                <span className="text-[clamp(9px,2.4vw,11px)] font-display font-medium uppercase tracking-[0.16em] text-[hsl(var(--primary))]">
+                  Official Partnership
                 </span>
-                <span className="text-[10px] text-muted-foreground">×</span>
-                <span className="rounded-full border border-border bg-[hsl(0_0%_100%/0.8)] px-3 py-1 text-[clamp(10px,2.8vw,12px)] font-display font-medium text-foreground">
+                <BadgeCheck className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
+              </div>
+              <div className="flex w-full flex-wrap items-center justify-center gap-2">
+                <span className="flex-1 rounded-2xl border border-border bg-[hsl(0_0%_100%/0.85)] px-3 py-2 text-[clamp(11px,3vw,13px)] font-display font-semibold text-foreground shadow-sm">
                   Google
                 </span>
-                <span className="text-[10px] text-muted-foreground">×</span>
-                <span className="rounded-full border border-border bg-[hsl(0_0%_100%/0.8)] px-3 py-1 text-[clamp(10px,2.8vw,12px)] font-display font-medium text-foreground">
+                <span className="flex-1 rounded-2xl border border-border bg-[hsl(0_0%_100%/0.85)] px-3 py-2 text-[clamp(11px,3vw,13px)] font-display font-semibold text-foreground shadow-sm">
                   Alibaba
                 </span>
               </div>
+              <p className="text-[clamp(9px,2.4vw,10px)] text-muted-foreground">
+                Nova is proud to partner with Google & Alibaba for this reward.
+              </p>
             </div>
 
             <div className="mt-4 rounded-[22px] border border-border bg-[hsl(0_0%_100%/0.66)] px-4 py-4 backdrop-blur-md sm:px-5 sm:py-5 [@media(max-height:700px)]:py-3">
