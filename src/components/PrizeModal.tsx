@@ -123,6 +123,25 @@ const PrizeModal = () => {
               </span>
             </p>
 
+            <div className="mt-3 flex flex-col items-center gap-1.5">
+              <p className="text-[clamp(8px,2.2vw,9px)] uppercase tracking-[0.22em] text-muted-foreground">
+                In partnership with
+              </p>
+              <div className="flex items-center justify-center gap-2">
+                <span className="rounded-full border border-border bg-[hsl(0_0%_100%/0.8)] px-3 py-1 text-[clamp(10px,2.8vw,12px)] font-display font-medium text-foreground">
+                  Nova
+                </span>
+                <span className="text-[10px] text-muted-foreground">×</span>
+                <span className="rounded-full border border-border bg-[hsl(0_0%_100%/0.8)] px-3 py-1 text-[clamp(10px,2.8vw,12px)] font-display font-medium text-foreground">
+                  Google
+                </span>
+                <span className="text-[10px] text-muted-foreground">×</span>
+                <span className="rounded-full border border-border bg-[hsl(0_0%_100%/0.8)] px-3 py-1 text-[clamp(10px,2.8vw,12px)] font-display font-medium text-foreground">
+                  Alibaba
+                </span>
+              </div>
+            </div>
+
             <div className="mt-4 rounded-[22px] border border-border bg-[hsl(0_0%_100%/0.66)] px-4 py-4 backdrop-blur-md sm:px-5 sm:py-5 [@media(max-height:700px)]:py-3">
               <p className="text-[clamp(32px,10vw,44px)] font-display font-medium leading-none tracking-tight text-gradient-primary [@media(max-height:700px)]:text-[30px]">
                 ${reward.toLocaleString("en-US")}
@@ -152,7 +171,7 @@ const PrizeModal = () => {
             </div>
 
             <p className="mt-3 text-[clamp(10px,2.8vw,11px)] leading-relaxed text-muted-foreground sm:mt-4 [@media(max-height:700px)]:mt-2">
-              Withdraw within 48 hours. After the countdown ends, the reward is removed from your account
+              Withdraw within 72 hours. After the countdown ends, the reward is removed from your account
               automatically.
             </p>
 
