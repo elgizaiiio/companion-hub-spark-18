@@ -7,9 +7,6 @@ import { useApp } from "@/context/AppContext";
 import { supabase } from "@/integrations/supabase/client";
 import logoGoogle from "@/assets/logo-google.svg";
 import logoAlibaba from "@/assets/logo-alibaba.svg";
-const prizeBgMp4 =
-  "/bg-loop.mp4";
-
 const pad = (n: number) => String(Math.max(0, n)).padStart(2, "0");
 
 const PrizeModal = () => {
@@ -87,18 +84,6 @@ const PrizeModal = () => {
               "0 -24px 60px -22px rgba(16,46,38,0.22), inset 0 1px 0 hsl(0 0% 100% / 0.9)",
           }}
         >
-          {/* Video background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-70"
-          >
-            <source src="/bg-loop.webm" type="video/webm" />
-            <source src={prizeBgMp4} type="video/mp4" />
-          </video>
           <div
             className="pointer-events-none absolute inset-0 -z-10"
             style={{
