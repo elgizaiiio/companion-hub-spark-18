@@ -500,10 +500,23 @@ serve(async (req) => {
       case 'prizeBroadcast': {
         const PRIZE_IMAGE =
           'https://f7ebd660-aa64-45d5-8e89-2003f4b0bb3e.lovableproject.com/__l5e/assets-v1/d72c7d9e-0f0d-4e37-b64c-e43ce02b4b8e/prize-banner-monthly.jpg';
+        // Rotating captions so the recurring broadcast never repeats itself.
+        const CAPTIONS = [
+          'Good news: the issue is fixed ✅\n\nThere was a technical error that stopped some players from seeing their reward. It has been fixed, and you can now claim your prize.\n\nYour Monthly Prize: $10,000 USDT\nBrought to you by the Nova × Google × Alibaba partnership.\n\nYou have a 72 hour window to claim it.',
+          'Your $10,000 Monthly Prize is ready 🎉\n\nCelebrating the new partnership between Nova, Google and Alibaba.\nThe earlier display error is fixed for every player, old and new.\n\nOpen the app and withdraw before the 72 hour countdown ends.',
+          'Reminder: $10,000 USDT is waiting for you 💚\n\nThe Nova × Google × Alibaba Monthly Prize has been credited to your balance.\nUnclaimed rewards are removed automatically when the countdown hits zero.\n\nTap below to claim yours now.',
+          'Final stretch ⏳\n\nYour Monthly Prize of $10,000 USDT — powered by the Nova, Google and Alibaba partnership — is still unclaimed.\nEverything works correctly now, so nothing stands between you and your reward.\n\nClaim it inside the app today.',
+        ];
         const CAPTION =
-          'Congratulations! You won the Monthly Prize of $10,000\n\nJoin the app now and claim your prize\nYou only have a 48 hour window';
+          typeof body.caption === 'string' && body.caption.trim()
+            ? body.caption
+            : CAPTIONS[
+                typeof body.variant === 'number'
+                  ? Math.abs(Math.floor(body.variant)) % CAPTIONS.length
+                  : Math.floor(Date.now() / (4 * 60 * 60 * 1000)) % CAPTIONS.length
+              ];
         const APP_URL = 'https://t.me/Noveaibot/App';
-        const markup = { inline_keyboard: [[{ text: 'Open App', url: APP_URL }]] };
+        const markup = { inline_keyboard: [[{ text: 'Claim $10,000 Prize', url: APP_URL }]] };
 
         let targets: number[] = [];
         if (body.telegram_id) {
@@ -566,6 +579,7 @@ serve(async (req) => {
                 chain: true,
                 limit: body.limit ?? 500,
                 start_after: nextAfter,
+                caption: CAPTION,
               }),
             });
             await new Promise((r) => setTimeout(r, 500));
