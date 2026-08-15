@@ -5,6 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useApp } from "@/context/AppContext";
 import { supabase } from "@/integrations/supabase/client";
+import { Handshake, BadgeCheck } from "lucide-react";
 const prizeBgMp4 =
   "/bg-loop.mp4";
 
